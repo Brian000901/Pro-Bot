@@ -11,7 +11,7 @@ module.exports = {
         const channels = channel.get('channels') || [];
         if (channels.includes(message.channel.id)) {
             let result = await pinyin(message.content, { pattern: 'num', type: 'array' });
-            result = message.content.split('').map((char, index) => char === '\n' ? '\n> ' : result[index]);
+            result = message.content.split('').map((char, index) => char === '\n' ? '\n-# > ' : result[index]);
             result = result.map(num => num === '0' ? '5' : num);
             let send;
             result = result.filter(x => x !== '');
@@ -30,7 +30,7 @@ module.exports = {
             }
             if (send === true) {
                 count.set(message.author.id, (count.get(message.author.id) || 0) + 1);
-                message.channel.send(`### :warning: <@${message.author.id}> 檢測到聲調笑話！你已經講了 ${count.get(message.author.id)} 次聲調笑話。\n> ${result.join(' ')}`);
+                message.channel.send(`### :warning: <@${message.author.id}> 檢測到聲調笑話！你已經講了 ${count.get(message.author.id)} 次聲調笑話。\n-# > ${result.join(' ')}`);
             }
         }
     }
