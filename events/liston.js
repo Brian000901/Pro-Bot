@@ -19,6 +19,8 @@ module.exports = {
                 if (
                     (result[i] === '1' && result[i + 1] === '2' && result[i + 2] === '3' && result[i + 3] === '4') ||
                     (result[i] === '4' && result[i + 1] === '3' && result[i + 2] === '2' && result[i + 3] === '1') ||
+                    (result[i] === '2' && result[i+1] === '3' && result[i+2] === '4' && result[i+3] === '5') ||
+                    (result[i] === '5' && result[i+1] === '4' && result[i+2] === '3' && result[i+3] === '2') ||
                     (result[i] === result[i + 1] && result[i] === result[i + 2] && result[i] === result[i + 3])
                 ) {
                     result[i] = `**${result[i]}**`;
@@ -30,7 +32,12 @@ module.exports = {
             }
             if (send === true) {
                 count.set(message.author.id, (count.get(message.author.id) || 0) + 1);
-                message.channel.send(`### :warning: <@${message.author.id}> 檢測到聲調笑話！你已經講了 ${count.get(message.author.id)} 次聲調笑話。\n-# > ${result.join(' ')}`);
+                const lengthCheck = `### :warning: <@${message.author.id}> 檢測到聲調笑話！你已經講了 ${count.get(message.author.id)} 次聲調笑話。\n-# > ${result.join(' ')}`
+                if (lengthCheck.length > 2000) {
+                    message.channel.send(`### :warning: <@${message.author.id}> 檢測到聲調笑話！你已經講了 ${count.get(message.author.id)} 次聲調笑話。\n-# > 訊息過長:()`);
+                } else {
+                    message.channel.send(lengthCheck);
+                }
             }
         }
     }
