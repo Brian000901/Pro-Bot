@@ -8,7 +8,7 @@ module.exports = {
         .setName('listen')
         .setDescription('監聽這個頻道的爛笑話'),
     async execute(interaction) {
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) && !interaction.member.id === '810409750625386497' ) return interaction.reply('你沒有權限使用此指令');
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) && !interaction.user.id === '810409750625386497' ) return interaction.reply('你沒有權限使用此指令');
         if (!fs.existsSync('./db')) {
             fs.mkdirSync('./db');
         }

@@ -7,7 +7,7 @@ module.exports = {
         .setName('stoplisten')
         .setDescription('停止監聽這個頻道的爛笑話'),
     async execute(interaction) {
-        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) && !interaction.member.id === '810409750625386497' ) return interaction.reply('你沒有權限使用此指令');
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator) && !interaction.user.id === '810409750625386497' ) return interaction.reply('你沒有權限使用此指令');
         const channel = interaction.channel.id;
         let channels = db.get('channels') || [];
         if (!channels.includes(channel)) {
