@@ -18,6 +18,6 @@ module.exports = {
         } else {
         random = Math.floor(Math.random() * 101);
         }
-        await interaction.reply(`${user.username} 的gay指數是 ${random}% `);
+        await interaction.reply(`<@${user.id}> 的gay指數是 ${random}% `);
     }
 };
