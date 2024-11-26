@@ -6,7 +6,7 @@ module.exports = {
     once: false,
     async execute(message, client) {
         if (message.author.bot) return;
-        if (message.content.toLowerCase().includes('owo')) {
+        if (message.content.toLowerCase() === 'owo') {
             message.reply('What\'s This?');
             const userId = message.author.id;
             let owoCounts = db.get('owoCounts');
